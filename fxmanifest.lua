@@ -3,7 +3,7 @@
 fx_version 'adamant'
 games { 'gta5' }
 
-author 'TrevorBarns w/ credits see GitHub'
+author 'RNM LVC Edit w/ credits see GitHub'
 description 'A siren / emergency lights controller for FiveM.'
 
 version '3.2.9'			-- Readonly version of currently installed version.
