@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: cl_lvc.lua
 PURPOSE: Core Functionality and User Input

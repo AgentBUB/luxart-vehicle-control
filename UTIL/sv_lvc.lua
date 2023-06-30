@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: server.lua
 PURPOSE: Handle version checking, syncing vehicle
@@ -124,7 +125,7 @@ CreateThread( function()
 					print('\t^7|________________________________________________________|')
 					print('\t|\t         ^8STABLE UPDATE AVAILABLE                 ^7|')
 					print('\t|^8                      DOWNLOAD AT:                      ^7|')
-					print('\t|^2 github.com/TrevorBarns/luxart-vehicle-control/releases ^7|')
+					print('\t|^2 github.com/AgentBUB/luxart-vehicle-control/releases ^7|')
 				end
 
 				--	IF PLUGINS ARE INSTALLED
@@ -162,6 +163,6 @@ CreateThread( function()
 			print('\t|^8 LVC. PLEASE STOP "lux_vehcontrol" AND RESTART LVC.     ^7|')
 	end
 	print('\t^7|________________________________________________________|')
-	print('\t^7|   Updates, Support, Feedback: ^5discord.gg/redneckmods      ^7|')
+	print('\t^7|   Updates, Support, Feedback: ^5discord.gg/redneckmods	 ^7|')
 	print('\t^7|________________________________________________________|\n\n')
 end)
