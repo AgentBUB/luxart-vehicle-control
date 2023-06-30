@@ -76,11 +76,20 @@ plugins_installed = false
 
 
 ------------------CUSTOM SETTINGS FROM BUB------------------
-stageCars = {
-    ['sasp1'] = {
+-- The spawncode of the car codes into the [''], then the extras for each stage in their respective slot.
+-- Example:
+--[[
+    ['spawncode'] = {
         one = {2, 5},
         two = {3},
         three = {4}
+    },
+]]
+stageCars = {
+    ['sasp1'] = {
+        one = {2, 5}, -- Extras for Stage 1
+        two = {3}, -- Extras for Stage 2
+        three = {4} -- Extras for Stage 3
     },
     ['sasp2'] = {
         one = {2, 5},
