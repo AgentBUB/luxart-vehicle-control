@@ -80,9 +80,9 @@ plugins_installed = false
 -- Example:
 --[[
     ['spawncode'] = {
-        one = {2, 5},
-        two = {3},
-        three = {4}
+        one = {2, 5}, -- Extras for Stage 1
+        two = {3}, -- Extras for Stage 2
+        three = {4} -- Extras for Stage 3
     },
 ]]
 stageCars = {
