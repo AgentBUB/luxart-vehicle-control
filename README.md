@@ -1,7 +1,3 @@
-<p align="center">
-<img align="center" width="300" src="https://i.gyazo.com/c45881d46eeef83e03634a6a251ab849.png">
-</p>
-
 # Luxart Vehicle Control | Redneck Mods Edition
 ### This is a modified LVC script meant to be used with the RNM Lighting Script for stage lighting-compatible vehicles.
 
