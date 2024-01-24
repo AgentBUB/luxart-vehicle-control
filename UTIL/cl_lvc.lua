@@ -82,6 +82,7 @@ local snd_pwrcall = {}
 local snd_airmanu = {}
 
 local translationTable = {}
+local translationTableRepair = {}
 
 --	Local fn forward declaration
 local RegisterKeyMaps, MakeOrdinal
@@ -560,6 +561,9 @@ CreateThread(function()
 	for k, _ in pairs(stageCars) do
 		translationTable[GetHashKey(k)] = k
 	end
+	for _, k in ipairs(noRepair) do
+		translationTableRepair[GetHashKey(k)] = k
+	end
 	while true do
 		CleanupSounds()
 		DistantCopCarSirens(false)
@@ -606,7 +610,7 @@ CreateThread(function()
 						state_pwrcall[veh] = 0
 					end
 					if state_airmanu[veh] == nil then
-							state_airmanu[veh] = 0
+						state_airmanu[veh] = 0
 					end
 
 					--- IF LIGHTS ARE OFF TURN OFF SIREN ---
@@ -628,6 +632,7 @@ CreateThread(function()
 						if not key_lock then
 							------ TOG DFLT SRN LIGHTS ------
 							if IsDisabledControlJustReleased(0, 85) then
+								if translationTableRepair[GetEntityModel(veh)] ~= nil then SetVehicleAutoRepairDisabled(veh, true) end
 								if lights_on and stageCars[translationTable[GetEntityModel(veh)]] == nil then
 									AUDIO:Play('Off', AUDIO.off_volume)
 									--	SET NUI IMAGES
@@ -670,6 +675,12 @@ CreateThread(function()
 										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].one) do
 											SetVehicleExtra(veh, k, 0)
 										end
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].two) do
+											SetVehicleExtra(veh, k, 1)
+										end
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].three) do
+											SetVehicleExtra(veh, k, 1)
+										end
 									end
 									AUDIO:Play('On', AUDIO.on_volume) -- On
 									--	SET NUI IMAGES
@@ -680,6 +691,7 @@ CreateThread(function()
 										SetVehicleSiren(trailer, true)
 									end
 								end
+								SetVehicleAutoRepairDisabled(veh, false)
 								AUDIO:ResetActivityTimer()
 								count_bcast_timer = delay_bcast_timer
 							------ TOG LX SIREN ------

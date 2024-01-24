@@ -6,7 +6,7 @@ games { 'gta5' }
 author 'RNM LVC Edit w/ credits see GitHub'
 description 'A siren / emergency lights controller for FiveM.'
 
-version '1.0.0'			-- Currently installed version.
+version '1.5.0'			-- Currently installed version.
 
 ------------------------------
 

@@ -146,4 +146,19 @@ stageCars = {
         two = {3},
         three = {4, 6, 7}
     },
+    ['1500'] = {
+        one = {1},
+        two = {2, 5},
+        three = {3}
+    },
+    ['challengers'] = {
+        one = {1},
+        two = {2},
+        three = {3, 4}
+    },
+}
+
+noRepair = {
+    -- Vehicle that do NOT need to be auto repaired (Extras do NOT have collisions)
+    'challengers', "f550ambow", "f550ambow2", 'bcsotransp1', 'lcsotransp1', 'lcso4', 'lcso3', 'lcso1', 'bcso1', '1500', 'sasp3', 'sasp2', 'sasp5', 'sasp6', 'sasp7', 'sasp8', 'sasp9', 'sasp2k9', 'sasp3k9', 'sasp4', 'sasp4k9', 'bcso3', 'bcso2', 'bcso4', 'lcso2'
 }

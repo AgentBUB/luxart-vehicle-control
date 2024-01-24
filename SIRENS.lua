@@ -38,11 +38,11 @@ RequestScriptAudioBank('DLC_SERVERSIDEAUDIO\\OISS_SSA_VEHAUD_BCFD_NEW', false)
 
 -- CHANGE SIREN NAMES, AUDIONAME, AUDIOREF
 SIRENS = {
---[[1]]   { Name = 'Airhorn',       String = 'SIRENS_AIRHORN',                              Ref = 0 },
---[[2]]   { Name = 'Wail',          String = 'VEHICLES_HORNS_SIREN_1',                      Ref = 0 },
---[[3]]   { Name = 'Yelp',          String = 'VEHICLES_HORNS_SIREN_2',                      Ref = 0 },
---[[4]]   { Name = 'Priority',      String = 'VEHICLES_HORNS_POLICE_WARNING',               Ref = 0 },
---[[5]]   { Name = 'CustomA',  		String = 'RESIDENT_VEHICLES_SIREN_WAIL_01',             Ref = 0 },
+--[[1]]   { Name = 'Airhorn',       String = 'OISS_SSA_VEHAUD_LSPD_NEW_HORN',               Ref = 'OISS_SSA_VEHAUD_LSPD_NEW_SOUNDSET' },
+--[[2]]   { Name = 'Wail',          String = 'OISS_SSA_VEHAUD_LSPD_NEW_SIREN_ADAM',         Ref = 'OISS_SSA_VEHAUD_LSPD_NEW_SOUNDSET' },
+--[[3]]   { Name = 'Yelp',          String = 'OISS_SSA_VEHAUD_LSPD_NEW_SIREN_BOY',          Ref = 'OISS_SSA_VEHAUD_LSPD_NEW_SOUNDSET' },
+--[[4]]   { Name = 'Priority',      String = 'OISS_SSA_VEHAUD_LSPD_NEW_SIREN_CHARLES',      Ref = 'OISS_SSA_VEHAUD_LSPD_NEW_SOUNDSET' },
+--[[5]]   { Name = 'Manual Wail',  	String = 'OISS_SSA_VEHAUD_LSPD_NEW_SIREN_DAVID',        Ref = 'OISS_SSA_VEHAUD_LSPD_NEW_SOUNDSET' },
 --[[6]]   { Name = 'CustomB',       String = 'RESIDENT_VEHICLES_SIREN_WAIL_02',             Ref = 0 },
 --[[7]]   { Name = 'CustomA',    	String = 'RESIDENT_VEHICLES_SIREN_WAIL_03',             Ref = 0 },
 --[[8]]   { Name = 'CustomA',    	String = 'RESIDENT_VEHICLES_SIREN_QUICK_01',            Ref = 0 },
@@ -94,7 +94,7 @@ SIRENS = {
 --ASSIGN SIRENS TO VEHICLES
 SIREN_ASSIGNMENTS = {
 	--['<gameName>'] = {tones},
-	['DEFAULT'] = { 1, 2, 3, 4 },
+	['DEFAULT'] = { 1, 2, 3, 4, 5 },
 	['295-gameName'] = { 15, 16, 17, 18, 19, 20 },
 	['FS-gameName'] = { 21, 22, 23, 24, 25, 26 },
 	['TMD-gameName'] = { 27, 28, 29, 30, 31, 32 },
