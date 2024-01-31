@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: cl_lvc.lua
 PURPOSE: Core Functionality and User Input
@@ -79,6 +80,9 @@ local ind_state_h = 3
 local snd_lxsiren = {}
 local snd_pwrcall = {}
 local snd_airmanu = {}
+
+local translationTable = {}
+local translationTableRepair = {}
 
 --	Local fn forward declaration
 local RegisterKeyMaps, MakeOrdinal
@@ -544,7 +548,22 @@ end)
 
 
 ---------------------------------------------------------------------
+local function has_value(tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
 CreateThread(function()
+	for k, _ in pairs(stageCars) do
+		translationTable[GetHashKey(k)] = k
+	end
+	for _, k in ipairs(noRepair) do
+		translationTableRepair[GetHashKey(k)] = k
+	end
 	while true do
 		CleanupSounds()
 		DistantCopCarSirens(false)
@@ -591,7 +610,7 @@ CreateThread(function()
 						state_pwrcall[veh] = 0
 					end
 					if state_airmanu[veh] == nil then
-							state_airmanu[veh] = 0
+						state_airmanu[veh] = 0
 					end
 
 					--- IF LIGHTS ARE OFF TURN OFF SIREN ---
@@ -613,7 +632,8 @@ CreateThread(function()
 						if not key_lock then
 							------ TOG DFLT SRN LIGHTS ------
 							if IsDisabledControlJustReleased(0, 85) then
-								if lights_on then
+								if translationTableRepair[GetEntityModel(veh)] ~= nil then SetVehicleAutoRepairDisabled(veh, true) end
+								if lights_on and stageCars[translationTable[GetEntityModel(veh)]] == nil then
 									AUDIO:Play('Off', AUDIO.off_volume)
 									--	SET NUI IMAGES
 									HUD:SetItemState('switch', false)
@@ -623,8 +643,45 @@ CreateThread(function()
 									if trailer ~= nil and trailer ~= 0 then
 										SetVehicleSiren(trailer, false)
 									end
-
+								elseif lights_on and stageCars[translationTable[GetEntityModel(veh)]] ~= nil then
+									AUDIO:Play('On', AUDIO.on_volume)
+									if IsVehicleExtraTurnedOn(veh, stageCars[translationTable[GetEntityModel(veh)]].one[1]) and not IsVehicleExtraTurnedOn(veh, stageCars[translationTable[GetEntityModel(veh)]].two[1]) then
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].two) do
+											SetVehicleExtra(veh, k, 0)
+										end
+									elseif IsVehicleExtraTurnedOn(veh, stageCars[translationTable[GetEntityModel(veh)]].two[1]) and not IsVehicleExtraTurnedOn(veh, stageCars[translationTable[GetEntityModel(veh)]].three[1]) then
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].three) do
+											SetVehicleExtra(veh, k, 0)
+										end
+									elseif IsVehicleExtraTurnedOn(veh, stageCars[translationTable[GetEntityModel(veh)]].three[1]) then
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].one) do
+											SetVehicleExtra(veh, k, 1)
+										end
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].two) do
+											SetVehicleExtra(veh, k, 1)
+										end
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].three) do
+											SetVehicleExtra(veh, k, 1)
+										end
+										AUDIO:Play('Off', AUDIO.off_volume)
+										--	TURN OFF SIRENS (R* LIGHTS)
+										SetVehicleSiren(veh, false)
+										if trailer ~= nil and trailer ~= 0 then
+											SetVehicleSiren(trailer, false)
+										end
+									end
 								else
+									if stageCars[translationTable[GetEntityModel(veh)]] ~= nil then
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].one) do
+											SetVehicleExtra(veh, k, 0)
+										end
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].two) do
+											SetVehicleExtra(veh, k, 1)
+										end
+										for _,k in pairs(stageCars[translationTable[GetEntityModel(veh)]].three) do
+											SetVehicleExtra(veh, k, 1)
+										end
+									end
 									AUDIO:Play('On', AUDIO.on_volume) -- On
 									--	SET NUI IMAGES
 									HUD:SetItemState('switch', true)
@@ -634,6 +691,7 @@ CreateThread(function()
 										SetVehicleSiren(trailer, true)
 									end
 								end
+								SetVehicleAutoRepairDisabled(veh, false)
 								AUDIO:ResetActivityTimer()
 								count_bcast_timer = delay_bcast_timer
 							------ TOG LX SIREN ------

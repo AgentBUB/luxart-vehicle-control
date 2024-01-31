@@ -1,5 +1,5 @@
 --------------------COMMUNITY ID-------------------
-community_id = ''
+community_id = 'daT2in'
 --	Sets a prefix for saved values at the user end, without this people who play on multiple LVC server could face conflicts. **Once set DO NOT CHANGE. It will result in loss of data for end users.**
 --		I recommend something short (4-6 characters) for example a community abbreviation. SPACES ARE NOT ALLOWED.
 
@@ -21,7 +21,7 @@ reminder_rate = 10
 --	How often, in luxart key presses, to remind you that your siren controller is locked.
 
 -----------------HUD FUNCTIONALITY-----------------
-hud_first_default = true
+hud_first_default = false
 --	First state of HUD, otherwise it uses the players KVP setting (previous state). 
 
 ---------------MAIN SIREN SETTINGS-----------------
@@ -73,3 +73,92 @@ default_reminder_volume = 0.09
 
 ------------------PLUG-IN SUPPORT------------------
 plugins_installed = false
+
+
+------------------CUSTOM SETTINGS FROM BUB------------------
+-- The spawncode of the car codes into the [''], then the extras for each stage in their respective slot.
+-- Example:
+--[[
+    ['spawncode'] = {
+        one = {2, 5}, -- Extras for Stage 1
+        two = {3}, -- Extras for Stage 2
+        three = {4} -- Extras for Stage 3
+    },
+]]
+stageCars = {
+    ['sasp1'] = {
+        one = {2, 5}, -- Extras for Stage 1
+        two = {3}, -- Extras for Stage 2
+        three = {4} -- Extras for Stage 3
+    },
+    ['sasp2'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp2k9'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp3'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp3k9'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp4k9'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp4'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp5'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp6'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp7'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp8'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['sasp9'] = {
+        one = {2, 5},
+        two = {3},
+        three = {4, 6, 7}
+    },
+    ['1500'] = {
+        one = {1},
+        two = {2, 5},
+        three = {3}
+    },
+    ['challengers'] = {
+        one = {1},
+        two = {2},
+        three = {3, 4}
+    },
+}
+
+noRepair = {
+    -- Vehicle that do NOT need to be auto repaired (Extras do NOT have collisions)
+    'challengers', "f550ambow", "f550ambow2", 'bcsotransp1', 'lcsotransp1', 'lcso4', 'lcso3', 'lcso1', 'bcso1', '1500', 'sasp1', 'sasp6', 'bcso3', 'bcso2', 'bcso4', 'lcso2'
+}

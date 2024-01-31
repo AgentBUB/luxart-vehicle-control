@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: cl_utils.lua
 PURPOSE: Utilities for siren assignments and tables
@@ -411,10 +412,8 @@ function UTIL:TogVehicleExtras(veh, extra_id, state, repair)
 						doors[i] = GetVehicleDoorAngleRatio(veh, i)
 					end
 				end
-				SetVehicleAutoRepairDisabled(veh, not repair)
 				SetVehicleExtra(veh, extra_id, false)
 				UTIL:Print(Lang:t('info.extra_on', {extra = extra_id}), false)
-				SetVehicleAutoRepairDisabled(veh, false)
 				if repair then
 					for i = 0,6 do
 						if doors[i] > 0.0 then
@@ -430,5 +429,4 @@ function UTIL:TogVehicleExtras(veh, extra_id, state, repair)
 			end
 		end
 	end
-	SetVehicleAutoRepairDisabled(veh, false)
 end

@@ -1,29 +1,22 @@
+# Luxart Vehicle Control | Redneck Mods Edition
+### This is a modified LVC script meant to be used with the RNM Lighting Script for stage lighting-compatible vehicles.
+
 <p align="center">
-<img align="center" width="600" src="https://i.gyazo.com/c45881d46eeef83e03634a6a251ab849.png">
+<a target="_blank" href="https://www.redneckmods.com/"><img align="center" style="width: 35%;" target="_blank" src="https://dunb17ur4ymx4.cloudfront.net/webstore/logos/c95b1f17fdc4c6385be8aadfb26a80dc7190881e.png"></a>
+<a target="_blank" href="https://www.shadowdevs.com/"><img align="center" style="width: 35%;" target="_blank" src="https://shadowdevs.com/img/ShadowDevBanner.png"></a>
+<a target="_blank" href="https://www.luxartengineering.com/"><img align="center" target="_blank" src="https://i.imgur.com/CwbNKa9.png"></a>
 </p>
 
-# Luxart Vehicle Control v3
-### Documentation and About: [Welcome to Luxart Engineering - Gitbook](https://www.luxartengineering.com/)
-
-<a href="https://www.luxartengineering.com/"><img target="_blank" src="https://i.imgur.com/CwbNKa9.png"></a>
-
-### Support, Suggestions, and Updates: [TrevorBarns Development Discord](https://discord.com/invite/PXYQ4T8wB9)
-<a href="https://discord.link/lvc"><img target="_blank" src="https://discordapp.com/api/guilds/344333824911605762/widget.png?style=banner3"></a>
-
-## Other Resources
-* [Luxart Vehicle Control: Fleet](https://github.com/TrevorBarns/luxart-vehicle-control-fleet)
-* [Luxart Vehicle Control - Siren Packs](https://github.com/TrevorBarns/luxart-vehicle-control-extras)
-* [Server Sided Audio Tester](https://github.com/TrevorBarns/Server-Side-Audio-Tester)
-* [zScoreboard w/activity & ping](https://github.com/TrevorBarns/z-scoreboard)
-
-## Tier 2 Sponsors
-* [jojom2341](https://www.youtube.com/jojom2341)
+### Support, Suggestions, and Updates: [Redneck Mods Discord](https://discord.gg/redneckmods)
 
 ## Credits:
+LVC's orignal base for this modification made by __TrevorBarns__! Thanks for making it bud!
+
 Luxart Vehicle Control was an ingenious creation by __Lt. Caine__! Thank you! 
 
 ELS Clicks added by __Faction__, this added realism pushed me to get into developing in the first place. Thank you!
 
 __All credit to those above who contributed there projects can be found here:__
+* LVC OG Used for this by TrevorBarns: https://github.com/TrevorBarns/luxart-vehicle-control
 * Luxart Vehicle Control (Original Release) by Lt. Caine: https://forum.cfx.re/t/release-luxart-vehicle-control/17304
 * Luxart Vehicle Control ELS Clicks by Faction: https://forum.cfx.re/t/release-luxart-vehicle-control-els-clicks/921644

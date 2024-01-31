@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: cl_ragemenu.lua
 PURPOSE: Handle RageUI
@@ -26,7 +27,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 RMenu.Add('lvc', 'main', RageUI.CreateMenu(' ', Lang:t('menu.main'), 0, 0, "lvc", "lvc_v3_logo"))
 RMenu.Add('lvc', 'maintone', RageUI.CreateSubMenu(RMenu:Get('lvc', 'main'),' ', Lang:t('menu.siren'), 0, 0, "lvc", "lvc_v3_logo"))
-RMenu.Add('lvc', 'hudsettings', RageUI.CreateSubMenu(RMenu:Get('lvc', 'main'),' ', Lang:t('menu.hud'), 0, 0, "lvc", "lvc_v3_logo"))
 RMenu.Add('lvc', 'audiosettings', RageUI.CreateSubMenu(RMenu:Get('lvc', 'main'),' ', Lang:t('menu.audio'), 0, 0, "lvc", "lvc_v3_logo"))
 RMenu.Add('lvc', 'volumesettings', RageUI.CreateSubMenu(RMenu:Get('lvc', 'audiosettings'),' ', Lang:t('menu.audio'), 0, 0, "lvc", "lvc_v3_logo"))
 RMenu.Add('lvc', 'plugins', RageUI.CreateSubMenu(RMenu:Get('lvc', 'main'),' ', Lang:t('menu.plugins'), 0, 0, "lvc", "lvc_v3_logo"))
@@ -37,7 +37,6 @@ RMenu:Get('lvc', 'main'):SetTotalItemsPerPage(13)
 RMenu:Get('lvc', 'volumesettings'):SetTotalItemsPerPage(12)
 RMenu:Get('lvc', 'main'):DisplayGlare(false)
 RMenu:Get('lvc', 'maintone'):DisplayGlare(false)
-RMenu:Get('lvc', 'hudsettings'):DisplayGlare(false)
 RMenu:Get('lvc', 'audiosettings'):DisplayGlare(false)
 RMenu:Get('lvc', 'volumesettings'):DisplayGlare(false)
 RMenu:Get('lvc', 'plugins'):DisplayGlare(false)
@@ -110,7 +109,6 @@ end
 function IsMenuOpen()
 	return 	RageUI.Visible(RMenu:Get('lvc', 'main')) or
 			RageUI.Visible(RMenu:Get('lvc', 'maintone')) or
-			RageUI.Visible(RMenu:Get('lvc', 'hudsettings')) or
 			RageUI.Visible(RMenu:Get('lvc', 'audiosettings')) or
 			RageUI.Visible(RMenu:Get('lvc', 'volumesettings')) or
 			RageUI.Visible(RMenu:Get('lvc', 'saveload')) or
@@ -277,16 +275,11 @@ CreateThread(function()
 				})
 			end
 			--MAIN MENU TO SUBMENU BUTTONS
-			RageUI.Separator(Lang:t('menu.other_settings_seperator'))
-			RageUI.Button(Lang:t('menu.hud'), Lang:t('menu.hud_desc'), {RightLabel = '→→→'}, true, {
-			  onSelected = function()
-			  end,
-			}, RMenu:Get('lvc', 'hudsettings'))
+			RageUI.Separator(Lang:t('menu.misc_settings_seperator'))
 			RageUI.Button(Lang:t('menu.audio'), Lang:t('menu.audio_desc'), {RightLabel = '→→→'}, true, {
 			  onSelected = function()
 			  end,
 			}, RMenu:Get('lvc', 'audiosettings'))
-			RageUI.Separator(Lang:t('menu.misc_settings_seperator'))
 			if plugins_installed then
 				RageUI.Button(Lang:t('menu.plugins'), Lang:t('menu.plugins_desc'), {RightLabel = '→→→'}, true, {
 				  onSelected = function()
@@ -355,42 +348,6 @@ CreateThread(function()
 		---------------------------------------------------------------------
 		-------------------------OTHER SETTINGS MENU-------------------------
 		---------------------------------------------------------------------
-		--HUD SETTINGS
-	    RageUI.IsVisible(RMenu:Get('lvc', 'hudsettings'), function()
-			local hud_state = HUD:GetHudState()
-			local hud_backlight_mode = HUD:GetHudBacklightMode()
-			RageUI.Checkbox(Lang:t('menu.enabled'), Lang:t('menu.hud_enabled_desc'), hud_state, {}, {
-				onChecked = function()
-					HUD:SetHudState(true)
-				end,
-				onUnChecked = function()
-					HUD:SetHudState(false)
-				end,
-			})
-			RageUI.Button(Lang:t('menu.hud_move_mode'), Lang:t('menu.hud_move_mode_desc'), {}, hud_state, {
-				onSelected = function()
-					HUD:SetMoveMode(true, true)
-				end,
-			});
-			RageUI.Slider(Lang:t('menu.hud_scale'), 4*HUD:GetHudScale(), 6, 0.2, Lang:t('menu.hud_scale_desc'), false, {}, hud_state, {
-				onSliderChange = function(Index)
-					HUD:SetHudScale(Index/4)
-				end,
-			});
-			RageUI.List(Lang:t('menu.hud_backlight'), {Lang:t('menu.hud_backlight_auto'), Lang:t('menu.hud_backlight_off'), Lang:t('menu.hud_backlight_on') }, hud_backlight_mode, Lang:t('menu.hud_backlight_desc'), {}, hud_state, {
-			  onListChange = function(Index, Item)
-				hud_backlight_mode = Index
-				HUD:SetHudBacklightMode(hud_backlight_mode)
-			  end,
-			})
-			RageUI.Button(Lang:t('menu.hud_reset'), Lang:t('menu.hud_reset_desc'), {}, hud_state, {
-				onSelected = function()
-					HUD:ResetPosition()
-					HUD:SetHudState(false)
-					HUD:SetHudState(true)
-				end,
-			});
-		end)
 		--AUDIO SETTINGS MENU
 		RageUI.IsVisible(RMenu:Get('lvc', 'audiosettings'), function()
 			RageUI.Checkbox(Lang:t('menu.audio_radio'), Lang:t('menu.audio_radio_desc'), AUDIO.radio_masterswitch, {}, {

@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: server.lua
 PURPOSE: Handle version checking, syncing vehicle
@@ -77,15 +78,9 @@ end)
 
 CreateThread( function()
 -- Get LVC version from github
-	PerformHttpRequest('https://raw.githubusercontent.com/TrevorBarns/luxart-vehicle-control/master/version', function(err, responseText, headers)
+	PerformHttpRequest('https://raw.githubusercontent.com/AgentBUB/version-api/main/rnm-lvc', function(err, responseText, headers)
 		if responseText ~= nil and responseText ~= '' then
 			repo_version = semver(responseText:gsub('\n', ''))
-		end
-	end)
--- Get LVC beta version from github
-	PerformHttpRequest('https://raw.githubusercontent.com/TrevorBarns/luxart-vehicle-control/master/beta_version', function(err, responseText, headers)
-		if responseText ~= nil and responseText ~= '' then
-			repo_beta_version = semver(responseText:gsub('\n', ''))
 		end
 	end)
 
@@ -130,24 +125,7 @@ CreateThread( function()
 					print('\t^7|________________________________________________________|')
 					print('\t|\t         ^8STABLE UPDATE AVAILABLE                 ^7|')
 					print('\t|^8                      DOWNLOAD AT:                      ^7|')
-					print('\t|^2 github.com/TrevorBarns/luxart-vehicle-control/releases ^7|')
-				elseif beta_checking and curr_version < repo_beta_version then
-					print('\t^7|________________________________________________________|')
-					print('\t|\t          ^4BETA UPDATE AVAILABLE                  ^7|')
-					print('\t|^4                      DOWNLOAD AT:                      ^7|')
-					print('\t|^2 github.com/TrevorBarns/luxart-vehicle-control/releases ^7|')
-				--	EXPERMENTAL VERSION
-				elseif curr_version > repo_version or curr_version == repo_beta_version then
-					print('\t^7|________________________________________________________|')
-					print('\t|\t               ^3BETA VERSION                      ^7|')
-					-- IS THE USER AWARE THEY DOWNLOADED EXPERMENTAL CHECK CONVARS
-					if not experimental then
-						print('\t|^3 THIS VERSION IS IN DEVELOPMENT AND IS NOT RECOMMENDED  ^7|')
-						print('\t|^3 BUGS MAY EXIST. IF THIS WAS A MISTAKE DOWNLOAD THE     ^7|')
-						print('\t|^3 LATEST STABLE RELEASE AT:                              ^7|')
-						print('\t|^2 github.com/TrevorBarns/luxart-vehicle-control/releases ^7|')
-						print('\t|^3 TO MUTE THIS: SET CONVAR \'experimental\' to \'true\'      ^7|')
-					end
+					print('\t|^2 github.com/AgentBUB/luxart-vehicle-control/releases ^7|')
 				end
 
 				--	IF PLUGINS ARE INSTALLED
@@ -185,6 +163,6 @@ CreateThread( function()
 			print('\t|^8 LVC. PLEASE STOP "lux_vehcontrol" AND RESTART LVC.     ^7|')
 	end
 	print('\t^7|________________________________________________________|')
-	print('\t^7|      Updates, Support, Feedback: ^5discord.link/LVC      ^7|')
+	print('\t^7|   Updates, Support, Feedback: ^5discord.gg/redneckmods	 ^7|')
 	print('\t^7|________________________________________________________|\n\n')
 end)

@@ -5,6 +5,7 @@ LUXART VEHICLE CONTROL V3 (FOR FIVEM)
 Coded by Lt.Caine
 ELS Clicks by Faction
 Additional Modification by TrevorBarns
+Redneck Mods Adaptations by Agent BUB
 ---------------------------------------------------
 FILE: cl_hud.lua
 PURPOSE: All HUD functions, callbacks, and GTA V 
@@ -26,7 +27,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ]]
 HUD = { }
 
-local show_HUD = hud_first_default
+local show_HUD = false
 local HUD_temp_hidden = false
 local HUD_scale
 local HUD_pos 
@@ -86,7 +87,7 @@ end)
 ------------------------------------------------
 --[[Getter for HUD State (whether hud is enabled).]]
 function HUD:GetHudState()
-	return show_HUD
+	return false
 end
 
 --[[Setter for HUD State temp changes the state temporarily for pausing/hud hiding.]]
